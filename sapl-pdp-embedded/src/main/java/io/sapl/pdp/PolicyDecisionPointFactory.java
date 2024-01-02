@@ -31,7 +31,6 @@ import io.sapl.api.pip.PolicyInformationPointSupplier;
 import io.sapl.api.pip.StaticPolicyInformationPointSupplier;
 import io.sapl.functions.FilterFunctionLibrary;
 import io.sapl.functions.LoggingFunctionLibrary;
-import io.sapl.functions.SchemaValidationLibrary;
 import io.sapl.functions.StandardFunctionLibrary;
 import io.sapl.functions.TemporalFunctionLibrary;
 import io.sapl.interpreter.DefaultSAPLInterpreter;

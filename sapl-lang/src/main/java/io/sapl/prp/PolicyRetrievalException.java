@@ -17,9 +17,12 @@
  */
 package io.sapl.prp;
 
-import lombok.experimental.StandardException;
-
-@StandardException
 public class PolicyRetrievalException extends RuntimeException {
 
+    public PolicyRetrievalException() {
+    }
+
+    public PolicyRetrievalException(String message) {
+        super(message);
+    }
 }

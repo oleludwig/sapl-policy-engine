@@ -29,7 +29,7 @@
 	</parent>
 	<name>SAPL Language</name>
 	<artifactId>sapl-lang</artifactId>
-	<packaging>jar</packaging>
+	<packaging>eclipse-plugin</packaging>
 	<dependencies>
 		<!-- SAPL APIs implemented or used by the SAPL language core -->
 		<dependency>
@@ -102,11 +102,29 @@
 		</dependency>
 
 		<!-- JSON schema validation -->
-		<dependency>
-			<groupId>com.networknt</groupId>
-			<artifactId>json-schema-validator</artifactId>
-			<version>1.0.87</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.networknt</groupId>-->
+<!--			<artifactId>json-schema-validator</artifactId>-->
+<!--			<version>1.0.87</version>-->
+<!--		</dependency>-->
+<!--&lt;!&ndash;		for networknt&ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>com.ethlo.time</groupId>-->
+<!--			<artifactId>itu</artifactId>-->
+<!--			<version>1.7.5</version>-->
+<!--		</dependency>-->
+
+<!--&lt;!&ndash;		optional&ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.jruby.jcodings</groupId>-->
+<!--			<artifactId>jcodings</artifactId>-->
+<!--			<version>1.0.58</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.jruby.joni</groupId>-->
+<!--			<artifactId>joni</artifactId>-->
+<!--			<version>2.2.1</version>-->
+<!--		</dependency>-->
 
 		<!-- Testing -->
 		<dependency>
@@ -192,6 +210,19 @@
 	</dependencies>
 	<build>
 		<plugins>
+<!--			<plugin>-->
+<!--				<groupId>org.projectlombok</groupId>-->
+<!--				<artifactId>lombok-maven-plugin</artifactId>-->
+<!--				<version>1.18.20.0</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<phase>generate-sources</phase>-->
+<!--						<goals>-->
+<!--							<goal>delombok</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -363,25 +394,25 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.6.0</version>
-				<configuration>
-					<descriptors>
-						<descriptor>jar-with-ecore-model.xml</descriptor>
-					</descriptors>
-					<appendAssemblyId>false</appendAssemblyId>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<artifactId>maven-assembly-plugin</artifactId>-->
+<!--				<version>3.6.0</version>-->
+<!--				<configuration>-->
+<!--					<descriptors>-->
+<!--						<descriptor>jar-with-ecore-model.xml</descriptor>-->
+<!--					</descriptors>-->
+<!--					<appendAssemblyId>false</appendAssemblyId>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>make-assembly</id>-->
+<!--						<phase>package</phase>-->
+<!--						<goals>-->
+<!--							<goal>single</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 </project>

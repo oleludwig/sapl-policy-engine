@@ -94,6 +94,7 @@
 		<snakeyaml.version>2.2</snakeyaml.version>
 		<sonar.host.url>https://sonar.ftk.de</sonar.host.url>
 		<failsafe.version>3.1.2</failsafe.version>
+		<tycho.version>3.0.5</tycho.version>
 		<docker-registry-url>ghcr.io/heutelbeck</docker-registry-url>
 		<sonar.exclusions>**/xtext-gen/**/*,**/xtend-gen/**/*,**/emf-gen/**/*</sonar.exclusions>
 		<argLine/>
@@ -127,6 +128,7 @@
 		<module>sapl-vaadin-editor</module>
 		<module>sapl-spring-data-r2dbc</module>
 		<module>sapl-spring-data-mongo-reactive</module>
+		<module>sapl-eclipse-target</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -460,6 +462,61 @@
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>${sonar.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<target>
+						<artifact>
+							<groupId>io.sapl</groupId>
+							<artifactId>sapl-eclipse-target</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
+					<environments>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+					<dependency-resolution>
+						<extraRequirements>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.xtext.logging</id>
+								<versionRange>1.2.24</versionRange>
+							</requirement>
+							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target
+								platform is Luna or later. (backward compatible with kepler and previous
+								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.rcp</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
+					<pomDependencies>consider</pomDependencies>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

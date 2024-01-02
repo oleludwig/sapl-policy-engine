@@ -29,7 +29,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.ToString;
 
 /**
@@ -79,7 +78,7 @@ public class AuthorizationDecision {
      *                 as value, and without any resource, advice, or obligations.
      *                 Must not be null.
      */
-    public AuthorizationDecision(@NonNull Decision decision) {
+    public AuthorizationDecision(Decision decision) {
         this.decision = decision;
     }
 
@@ -89,7 +88,7 @@ public class AuthorizationDecision {
      *         original object with newObligations. If the array is empty, no
      *         obligations will be present, not even an empty array.
      */
-    public AuthorizationDecision withObligations(@NonNull ArrayNode newObligations) {
+    public AuthorizationDecision withObligations(ArrayNode newObligations) {
         return new AuthorizationDecision(decision, resource,
                 newObligations.isEmpty() ? Optional.empty() : Optional.of(newObligations), advice);
     }
@@ -100,7 +99,7 @@ public class AuthorizationDecision {
      *         object with newAdvice. If the array is empty, no advice will be
      *         present, not even an empty array.
      */
-    public AuthorizationDecision withAdvice(@NonNull ArrayNode newAdvice) {
+    public AuthorizationDecision withAdvice(ArrayNode newAdvice) {
         return new AuthorizationDecision(decision, resource, obligations,
                 newAdvice.isEmpty() ? Optional.empty() : Optional.of(newAdvice));
     }
@@ -110,7 +109,7 @@ public class AuthorizationDecision {
      * @return new immutable decision object, replacing the resource with
      *         newResource.
      */
-    public AuthorizationDecision withResource(@NonNull JsonNode newResource) {
+    public AuthorizationDecision withResource(JsonNode newResource) {
         return new AuthorizationDecision(decision, Optional.of(newResource), obligations, advice);
     }
 
@@ -119,7 +118,7 @@ public class AuthorizationDecision {
      * @return new immutable decision object, replacing the resource with
      *         newResource.
      */
-    public AuthorizationDecision withDecision(@NonNull Decision newDecision) {
+    public AuthorizationDecision withDecision(Decision newDecision) {
         return new AuthorizationDecision(newDecision, resource, obligations, advice);
     }
 
