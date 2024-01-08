@@ -132,6 +132,7 @@
 		<module>sapl-eclipse-thirdparty</module>
 		<module>sapl_eclipse_ui</module>
 		<module>sapl-eclipse-feature</module>
+		<module>sapl-eclipse-repository</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
