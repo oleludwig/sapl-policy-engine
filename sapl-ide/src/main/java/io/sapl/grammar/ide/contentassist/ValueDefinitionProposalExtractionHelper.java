@@ -49,15 +49,21 @@ import io.sapl.grammar.sapl.impl.util.ImportsUtil;
 import io.sapl.interpreter.functions.FunctionContext;
 import io.sapl.interpreter.pip.AttributeContext;
 import io.sapl.pdp.config.VariablesAndCombinatorSource;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 public class ValueDefinitionProposalExtractionHelper {
 
     private final VariablesAndCombinatorSource variablesAndCombinatorSource;
     private final FunctionContext              functionContext;
     private final AttributeContext             attributeContext;
     private final ContentAssistContext         context;
+
+    public ValueDefinitionProposalExtractionHelper(VariablesAndCombinatorSource variablesAndCombinatorSource,
+            FunctionContext functionContext, AttributeContext attributeContext, ContentAssistContext context) {
+        this.variablesAndCombinatorSource = variablesAndCombinatorSource;
+        this.functionContext              = functionContext;
+        this.attributeContext             = attributeContext;
+        this.context                      = context;
+    }
 
     public Collection<String> getProposals(EObject model, ProposalType proposalType) {
         int currentOffset = context.getOffset();

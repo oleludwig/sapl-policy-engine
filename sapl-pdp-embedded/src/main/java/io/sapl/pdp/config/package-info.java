@@ -15,21 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.sapl.grammar.ide;
+@org.osgi.annotation.versioning.Version("3.0.0")
+@org.osgi.annotation.bundle.Export
 
-import org.eclipse.xtext.testing.AbstractLanguageServerTest;
-
-/**
- * This class derives from the xtext test class to define a test environment for
- * sapl policies
- */
-public abstract class AbstractSaplLanguageServerTest extends AbstractLanguageServerTest {
-
-    /**
-     * Instantiates the test.
-     */
-    public AbstractSaplLanguageServerTest() {
-        super("sapl");
-    }
-
-}
+package io.sapl.pdp.config;

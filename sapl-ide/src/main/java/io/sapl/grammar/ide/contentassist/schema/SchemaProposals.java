@@ -32,14 +32,16 @@ import io.sapl.api.interpreter.Val;
 import io.sapl.grammar.sapl.Expression;
 import io.sapl.interpreter.context.AuthorizationContext;
 import io.sapl.pdp.config.VariablesAndCombinatorSource;
-import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 
-@RequiredArgsConstructor
 public class SchemaProposals {
 
     private static final Collection<String>    unwantedPathKeywords = Set.of("java\\.?");
     private final VariablesAndCombinatorSource variablesAndCombinatorSource;
+
+    public SchemaProposals(VariablesAndCombinatorSource variablesAndCombinatorSource) {
+        this.variablesAndCombinatorSource = variablesAndCombinatorSource;
+    }
 
     public List<String> getVariableNamesAsTemplates() {
         var variablesMap = getAllVariablesAsMap();

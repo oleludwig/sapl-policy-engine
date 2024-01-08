@@ -145,7 +145,7 @@ public class PolicyDecisionPointFactory {
         functionCtx.loadLibrary(FilterFunctionLibrary.class);
         functionCtx.loadLibrary(StandardFunctionLibrary.class);
         functionCtx.loadLibrary(TemporalFunctionLibrary.class);
-        functionCtx.loadLibrary(SchemaValidationLibrary.class);
+//        functionCtx.loadLibrary(SchemaValidationLibrary.class);
         functionCtx.loadLibrary(LoggingFunctionLibrary.class);
         return functionCtx;
     }

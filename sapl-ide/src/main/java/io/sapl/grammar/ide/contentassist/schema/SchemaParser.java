@@ -32,9 +32,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
 public class SchemaParser {
 
     private static final int                MAX_DEPTH         = 20;
@@ -43,6 +40,10 @@ public class SchemaParser {
             "allOf", "anyOf", "dependentRequired", "description", "enum", "format", "items", "oneOf", "properties",
             "required", "title", "type");
     private final Map<String, JsonNode>     variables;
+
+    public SchemaParser(Map<String, JsonNode> variables) {
+        this.variables = variables;
+    }
 
     public List<String> generatePaths(String schema) {
 

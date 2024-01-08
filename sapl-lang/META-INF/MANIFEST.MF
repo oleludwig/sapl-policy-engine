@@ -10,7 +10,17 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: io.sapl.grammar.sapl,
  io.sapl.grammar.sapl.impl,
- io.sapl.grammar.sapl.util
+ io.sapl.grammar.sapl.util,
+ io.sapl.functions,
+ io.sapl.interpreter,
+ io.sapl.interpreter.combinators,
+ io.sapl.interpreter.context,
+ io.sapl.interpreter.functions,
+ io.sapl.interpreter.pip,
+ io.sapl.pip,
+ io.sapl.prp,
+ io.sapl.prp.index,
+ io.sapl.prp.index.naive
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
  org.eclipse.equinox.common;bundle-version="3.16.0",
