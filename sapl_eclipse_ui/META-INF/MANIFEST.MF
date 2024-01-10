@@ -21,4 +21,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.example.domainmodel.ui.quickfix,
  org.example.domainmodel.ui.contentassist,
  org.example.sapl.ui.internal
-Bundle-Activator: org.example.sapl.ui.internal.SaplActivator
+Bundle-Activator: sapl_eclipse_ui.internal.Sapl_eclipse_uiActivator

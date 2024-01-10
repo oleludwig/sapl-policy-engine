@@ -10,7 +10,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  */
 public class SAPLUiModule extends AbstractSAPLUiModule {
 
-    public SAPLUiModule(AbstractUIPlugin plugin) {
-        super(plugin);
-    }
+	public SAPLUiModule(AbstractUIPlugin plugin) {
+		super(plugin);
+	}
 }

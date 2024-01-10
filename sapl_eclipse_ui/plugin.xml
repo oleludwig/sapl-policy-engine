@@ -4,48 +4,48 @@
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="sapl"
-			id="org.example.domainmodel.Domainmodel"
+			id="io.sapl.grammar.ui.SAPL"
 			name="Domainmodel Editor">
 		</editor>
 	</extension>
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
 			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
 			<activeWhen>
 				<reference
-					definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+					definitionId="io.sapl.grammar.ui.SAPL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-			commandId="org.example.domainmodel.Domainmodel.validate">
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="io.sapl.grammar.ui.SAPL.validate">
 			<activeWhen>
 				<reference
-					definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+					definitionId="io.sapl.grammar.ui.SAPL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<!-- copy qualified name -->
 		<handler
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
 			<activeWhen>
-				<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+				<reference definitionId="io.sapl.grammar.ui.SAPL.Editor.opened" />
 			</activeWhen>
 		</handler>
 		<handler
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
 			<activeWhen>
 				<and>
-					<reference definitionId="org.example.domainmodel.Domainmodel.XtextEditor.opened" />
+					<reference definitionId="io.sapl.grammar.ui.SAPL.XtextEditor.opened" />
 					<iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -54,22 +54,22 @@
 		</handler>
 	</extension>
 	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="org.example.domainmodel.Domainmodel.Editor.opened">
+		<definition id="io.sapl.grammar.ui.SAPL.Editor.opened">
 			<and>
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="org.example.domainmodel.Domainmodel"
+						value="io.sapl.grammar.ui.SAPL"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
 		</definition>
-		<definition id="org.example.domainmodel.Domainmodel.XtextEditor.opened">
+		<definition id="io.sapl.grammar.ui.SAPL.XtextEditor.opened">
 			<and>
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="org.example.domainmodel.Domainmodel"
+						value="io.sapl.grammar.ui.SAPL"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
@@ -78,33 +78,33 @@
 	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="org.example.domainmodel.Domainmodel"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="io.sapl.grammar.ui.SAPL"
 			name="Domainmodel">
-			<keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+			<keywordReference id="io.sapl.ui.keyword_Domainmodel"/>
 		</page>
 		<page
-			category="org.example.domainmodel.Domainmodel"
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="org.example.domainmodel.Domainmodel.coloring"
+			category="io.sapl.grammar.ui.SAPL"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="io.sapl.grammar.ui.SAPL.coloring"
 			name="Syntax Coloring">
-			<keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+			<keywordReference id="io.sapl.ui.keyword_Domainmodel"/>
 		</page>
 		<page
-			category="org.example.domainmodel.Domainmodel"
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-			id="org.example.domainmodel.Domainmodel.templates"
+			category="io.sapl.grammar.ui.SAPL"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="io.sapl.grammar.ui.SAPL.templates"
 			name="Templates">
-			<keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+			<keywordReference id="io.sapl.ui.keyword_Domainmodel"/>
 		</page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="org.example.domainmodel.Domainmodel"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="io.sapl.grammar.ui.SAPL"
 			name="Domainmodel">
-			<keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+			<keywordReference id="io.sapl.ui.keyword_Domainmodel"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -114,14 +114,14 @@
 	<extension
 		point="org.eclipse.ui.keywords">
 		<keyword
-			id="org.example.domainmodel.ui.keyword_Domainmodel"
+			id="io.sapl.ui.keyword_Domainmodel"
 			label="Domainmodel"/>
 	</extension>
 	<extension
 		point="org.eclipse.ui.commands">
 		<command
 			description="Trigger expensive validation"
-			id="org.example.domainmodel.Domainmodel.validate"
+			id="io.sapl.grammar.ui.SAPL.validate"
 			name="Validate">
 		</command>
 		<!-- copy qualified name -->
@@ -142,12 +142,12 @@
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
 			<command
-				commandId="org.example.domainmodel.Domainmodel.validate"
+				commandId="io.sapl.grammar.ui.SAPL.validate"
 				style="push"
 				tooltip="Trigger expensive validation">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+						definitionId="io.sapl.grammar.ui.SAPL.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -157,7 +157,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+					<reference definitionId="io.sapl.grammar.ui.SAPL.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -165,7 +165,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+					<reference definitionId="io.sapl.grammar.ui.SAPL.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -174,7 +174,7 @@
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
 					<and>
-						<reference definitionId="org.example.domainmodel.Domainmodel.XtextEditor.opened" />
+						<reference definitionId="io.sapl.grammar.ui.SAPL.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -187,7 +187,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+					<reference definitionId="io.sapl.grammar.ui.SAPL.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -195,11 +195,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
 			commandId="org.eclipse.xtext.ui.editor.FindReferences">
 			<activeWhen>
 				<reference
-					definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+					definitionId="io.sapl.grammar.ui.SAPL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -208,7 +208,7 @@
 		<content-type
 			base-type="org.eclipse.core.runtime.text"
 			file-extensions="sapl"
-			id="org.example.domainmodel.Domainmodel.contenttype"
+			id="io.sapl.grammar.ui.SAPL.contenttype"
 			name="Domainmodel File"
 			priority="normal">
 		</content-type>
@@ -217,17 +217,17 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="sapl">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
 			uriExtension="sapl">
 		</resourceServiceProvider>
 	</extension>
-	<!-- marker definitions for org.example.domainmodel.Domainmodel -->
+	<!-- marker definitions for io.sapl.grammar.ui.SAPL -->
 	<extension
 			id="domainmodel.check.fast"
 			name="Domainmodel Problem"
@@ -251,34 +251,34 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="org.example.domainmodel.Domainmodel"
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
-			id="org.example.domainmodel.Domainmodel.validator.preferencePage"
+			category="io.sapl.grammar.ui.SAPL"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="io.sapl.grammar.ui.SAPL.validator.preferencePage"
 			name="Errors/Warnings">
-			<keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+			<keywordReference id="io.sapl.ui.keyword_Domainmodel"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
 			fileExtensions="sapl"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="org.example.domainmodel.Domainmodel"
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="org.example.domainmodel.Domainmodel.compiler.preferencePage"
+			category="io.sapl.grammar.ui.SAPL"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="io.sapl.grammar.ui.SAPL.compiler.preferencePage"
 			name="Compiler">
-			<keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+			<keywordReference id="io.sapl.ui.keyword_Domainmodel"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.propertyPages">
 		<page
-			category="org.example.domainmodel.Domainmodel"
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="org.example.domainmodel.Domainmodel.compiler.propertyPage"
+			category="io.sapl.grammar.ui.SAPL"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="io.sapl.grammar.ui.SAPL.compiler.propertyPage"
 			name="Compiler">
-			<keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+			<keywordReference id="io.sapl.ui.keyword_Domainmodel"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -289,20 +289,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="org.example.domainmodel.Domainmodel.OpenGeneratedCode"
+				id="io.sapl.grammar.ui.SAPL.OpenGeneratedCode"
 				style="push">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+					<reference definitionId="io.sapl.grammar.ui.SAPL.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 			<activeWhen>
-				<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+				<reference definitionId="io.sapl.grammar.ui.SAPL.Editor.opened" />
 			</activeWhen>
 		</handler>
 	</extension>
@@ -310,11 +310,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+					definitionId="io.sapl.grammar.ui.SAPL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -334,16 +334,16 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened"/>
+					<reference definitionId="io.sapl.grammar.ui.SAPL.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for org.example.domainmodel.Domainmodel -->
+	<!-- quickfix marker resolution generator for io.sapl.grammar.ui.SAPL -->
 	<extension
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="org.example.sapl.ui.domainmodel.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
@@ -351,7 +351,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="org.example.sapl.ui.domainmodel.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
@@ -359,7 +359,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="org.example.sapl.ui.domainmodel.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
@@ -370,11 +370,11 @@
 	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+					definitionId="io.sapl.grammar.ui.SAPL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -386,7 +386,7 @@
 				style="push">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+						definitionId="io.sapl.grammar.ui.SAPL.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -394,34 +394,34 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="org.example.domainmodel.Domainmodel"
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-			id="org.example.domainmodel.Domainmodel.refactoring"
+			category="io.sapl.grammar.ui.SAPL"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="io.sapl.grammar.ui.SAPL.refactoring"
 			name="Refactoring">
-			<keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+			<keywordReference id="io.sapl.ui.keyword_Domainmodel"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.compare.contentViewers">
-		<viewer id="org.example.domainmodel.Domainmodel.compare.contentViewers"
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="io.sapl.grammar.ui.SAPL.compare.contentViewers"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="sapl">
 		</viewer>
 		<contentTypeBinding
-			contentTypeId="org.example.domainmodel.Domainmodel.contenttype"
-			contentViewerId="org.example.domainmodel.Domainmodel.compare.contentViewers" />
+			contentTypeId="io.sapl.grammar.ui.SAPL.contenttype"
+			contentViewerId="io.sapl.grammar.ui.SAPL.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
-		<viewer id="org.example.domainmodel.Domainmodel.compare.contentMergeViewers"
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="io.sapl.grammar.ui.SAPL.compare.contentMergeViewers"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="sapl" label="Domainmodel Compare">
 		</viewer>
 		<contentTypeBinding
-			contentTypeId="org.example.domainmodel.Domainmodel.contenttype"
-			contentMergeViewerId="org.example.domainmodel.Domainmodel.compare.contentMergeViewers" />
+			contentTypeId="io.sapl.grammar.ui.SAPL.contenttype"
+			contentMergeViewerId="io.sapl.grammar.ui.SAPL.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
-		<provider id="org.example.domainmodel.Domainmodel.editors.documentProviders"
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+		<provider id="io.sapl.grammar.ui.SAPL.editors.documentProviders"
+			class="io.sapl.grammar.ui.SAPLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
 			extensions="sapl">
 		</provider>
 	</extension>
